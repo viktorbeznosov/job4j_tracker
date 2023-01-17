@@ -20,6 +20,17 @@ public class Calculator {
         return (float) y / x;
     }
 
+    public double add(double first, double second) {
+        return first + second;
+    }
+
+    public double add(double first, double second, double third) {
+        return add(
+                first,
+                add(second, third)
+        );
+    }
+
     public float sumAllOperation(int y) {
         return sum(y) + minus(y) + this.multiply(y) + this.divide(y);
     }

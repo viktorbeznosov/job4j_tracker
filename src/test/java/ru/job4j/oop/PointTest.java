@@ -44,4 +44,39 @@ class PointTest {
         assertEquals(expected, out, 0.01);
     }
 
+    @Test
+    void when000To100Then1() {
+        double expected = 1;
+        Point c = new Point(0, 0, 0);
+        Point d = new Point(1, 0, 0);
+        double out = c.distance3d(d);
+        assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    void when000To200Then2() {
+        double expected = 2;
+        Point c = new Point(0, 0, 0);
+        Point d = new Point(2, 0, 0);
+        double out = c.distance3d(d);
+        assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    void when000To111Then1dot732() {
+        double expected = 1.732;
+        Point c = new Point(0, 0, 0);
+        Point d = new Point(1, 1, 1);
+        double out = c.distance3d(d);
+        assertEquals(expected, out, 0.01);
+    }
+
+    @Test
+    void when000To222Then3dot464() {
+        double expected = 3.464;
+        Point c = new Point(0, 0, 0);
+        Point d = new Point(2, 2, 2);
+        double out = c.distance3d(d);
+        assertEquals(expected, out, 0.01);
+    }
 }

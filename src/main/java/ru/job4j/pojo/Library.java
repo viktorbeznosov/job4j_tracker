@@ -19,7 +19,7 @@ public class Library {
         books[3] = tmpBook;
         System.out.println("Выводим книгу с названием Clean code");
         for (int i = 0; i < books.length; i++) {
-            if (books[i].getTitle().equals("Clean code")) {
+            if ("Clean code".equals(books[i].getTitle())) {
                 System.out.println(books[i].getTitle() + " - " + books[i].getPagesCount());
             }
         }

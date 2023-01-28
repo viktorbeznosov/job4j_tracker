@@ -66,16 +66,16 @@ public class TrackerTest {
         assertThat(result[1].getName()).isEqualTo(second.getName());
     }
 
-//    @Test
-//    public void whenReplaceItemIsSuccessful() {
-//        Tracker tracker = new Tracker();
-//        Item item = new Item("Bug");
-//        tracker.add(item);
-//        int id = item.getId();
-//        Item updateItem = new Item("Bug with description");
-//        tracker.replace(id, updateItem);
-//        assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
-//    }
+    @Test
+    public void whenReplaceItemIsSuccessful() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("Bug");
+        tracker.add(item);
+        int id = item.getId();
+        Item updateItem = new Item("Bug with description");
+        tracker.replace(id, updateItem);
+        assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
+    }
 
     @Test
     public void whenReplaceItemIsNotSuccessful() {

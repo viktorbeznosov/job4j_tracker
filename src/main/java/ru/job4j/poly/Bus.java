@@ -11,8 +11,8 @@ public class Bus implements Transport {
     }
 
     @Override
-    public void setPassengersCount(int passengersCount) {
-        this.passengersCount = passengersCount;
+    public void passengers(int passengers) {
+        System.out.println(String.format("В автобусе %d пассажиров", passengers));
     }
 
     @Override

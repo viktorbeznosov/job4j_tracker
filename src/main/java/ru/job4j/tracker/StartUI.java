@@ -19,16 +19,17 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
+        Output out = new ConsoleOutput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new ShowAllItems(),
-                new EditItem(),
-                new DeleteItem(),
-                new ShowById(),
-                new ShowItemsByName(),
-                new ExitProgram(),
+                new CreateAction(out),
+                new ShowAllItems(out),
+                new EditItem(out),
+                new DeleteItem(out),
+                new ShowById(out),
+                new ShowItemsByName(out),
+                new ExitProgram(out),
         };
         new StartUI().init(input, tracker, actions);
     }

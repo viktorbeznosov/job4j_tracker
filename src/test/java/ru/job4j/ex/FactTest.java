@@ -16,4 +16,11 @@ class FactTest {
         );
         assertThat(exception.getMessage()).isEqualTo("n should be more than zero.");
     }
+
+    @Test
+    public void when3ThenFact6() {
+        int expected = 6;
+        int result = (new Fact()).calc(3);
+        assertThat(result).isEqualTo(expected);
+    }
 }

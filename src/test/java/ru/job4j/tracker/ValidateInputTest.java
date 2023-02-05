@@ -38,4 +38,15 @@ class ValidateInputTest {
         int selected = input.askInt("Enter menu:");
         assertThat(selected).isEqualTo(1);
     }
+
+    @Test
+    public void whenManyCorrectInputs() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"1", "2"}
+        );
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(1);
+    }
 }

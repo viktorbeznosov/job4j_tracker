@@ -29,6 +29,10 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
+        Log4File log = Log4File.getInstance();
+        log.add("add new Item");
+        log.save();
+
         Output out = new ConsoleOutput();
         Input input = new ValidateInput(out, new ConsoleInput());
         Tracker tracker = new Tracker();

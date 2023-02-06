@@ -1,9 +1,5 @@
 package ru.job4j.early;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class PasswordValidator {
     public static String validate(String password) {
         if (password == null) {
@@ -14,36 +10,79 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
 
-        if (!passwordMatchRegExp(password, "[A-Z]", false)) {
+        if (!containsUppercaseLetter(password)) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
 
-        if (!passwordMatchRegExp(password, "[a-z]", false)) {
+        if (!containsLowercaseLetter(password)) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
 
-        if (!passwordMatchRegExp(password, "[0-9]", false)) {
+        if (!containsDigit(password)) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
 
-        if (!passwordMatchRegExp(password, "[!@#$%^&*()_]", false)) {
+        if (!containsSpecialSymbol(password)) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
 
-        if (passwordMatchRegExp(password, "(qwerty|admin|12345|password|user)", true)) {
+        if (containsForbiddenWords(password)) {
             throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
         }
 
         return password;
     }
 
-    public static boolean passwordMatchRegExp(String password, String regExp, boolean registerSensitive) {
-        Pattern pattern = Pattern.compile(regExp);
-        if (registerSensitive) {
-            pattern = Pattern.compile(regExp, Pattern.CASE_INSENSITIVE);
+    public static boolean containsUppercaseLetter(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isUpperCase(password.charAt(i))) {
+                return true;
+            }
         }
-        Matcher matcher = pattern.matcher(password);
-        return matcher.find();
+
+        return false;
+    }
+
+    public static boolean containsLowercaseLetter(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isLowerCase(password.charAt(i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean containsDigit(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isDigit(password.charAt(i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean containsSpecialSymbol(String password) {
+        String specialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/?";
+        for (int i = 0; i < password.length(); i++) {
+            if (specialChars.contains(String.valueOf(password.charAt(i)))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean containsForbiddenWords(String password) {
+        String[] forbiddenWords = new String[] {"qwerty", "12345", "password", "admin", "user"};
+        for (String forbiddenWord: forbiddenWords) {
+            if (password.toLowerCase().contains(forbiddenWord)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {

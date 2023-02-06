@@ -21,6 +21,6 @@ public final class Log4File {
     }
 
     public void save() {
-        
+
     }
 }

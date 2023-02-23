@@ -37,7 +37,6 @@ public class PasswordValidator {
             if (!Character.isDigit(password.charAt(i)) && !Character.isLetter(password.charAt(i))) {
                 containsSpecialSymbol = true;
             }
-
             if (containsUppercaseLetter && containsLowercaseLetter && containsDigit && containsSpecialSymbol) {
                 return;
             }

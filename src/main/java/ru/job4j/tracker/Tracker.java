@@ -30,7 +30,9 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        List<Item> rsl = new ArrayList<>();
+        rsl.addAll(items);
+        return rsl;
     }
 
     public List<Item> findByName(String key) {

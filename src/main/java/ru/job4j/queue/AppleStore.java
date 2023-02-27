@@ -14,22 +14,16 @@ public class AppleStore {
     }
 
     public String getLastHappyCustomer() {
-        Queue<Customer> customers = new LinkedList<>();
-        customers.addAll(queue);
         for (int i = 0; i < count - 1; i++) {
-            customers.poll();
+            queue.poll();
         }
-
-        return customers.peek().name();
+        return queue.peek().name();
     }
 
     public String getFirstUpsetCustomer() {
-        Queue<Customer> customers = new LinkedList<>();
-        customers.addAll(queue);
         for (int i = 0; i < count; i++) {
-            customers.poll();
+            queue.poll();
         }
-
-        return customers.peek().name();
+        return queue.peek().name();
     }
 }

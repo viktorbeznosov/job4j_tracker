@@ -36,8 +36,7 @@ public class AnalyzeByMap {
 
         for (Pupil pupil: pupils) {
             for (Subject subject: pupil.subjects()) {
-                Double score = subjects.containsKey(subject.name())
-                        ? subjects.get(subject.name()).doubleValue() + subject.score() : subject.score();
+                Double score = subjects.getOrDefault(subject.name(), Double.valueOf(0)) + subject.score();
                 subjects.put(subject.name(), score);
             }
         }

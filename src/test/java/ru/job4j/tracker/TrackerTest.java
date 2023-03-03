@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -108,5 +110,51 @@ public class TrackerTest {
         boolean result = tracker.delete(1000);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         assertThat(result).isFalse();
+    }
+
+    @Test
+    public void whenItemsSortedAscByName() {
+        Item firstItem = new Item(1, "first");
+        Item secondItem = new Item(2, "second");
+        Item thirdItem = new Item(3, "third");
+        Item fourthItem = new Item(4, "fourth");
+
+        List<Item> items = new ArrayList<>();
+        items.add(firstItem);
+        items.add(secondItem);
+        items.add(thirdItem);
+        items.add(fourthItem);
+        Collections.sort(items, new ItemAscByName());
+
+        List<Item> expected = new ArrayList<>();
+        expected.add(firstItem);
+        expected.add(fourthItem);
+        expected.add(secondItem);
+        expected.add(thirdItem);
+
+        assertThat(expected).isEqualTo(items);
+    }
+
+    @Test
+    public void whenItemsSortedDescByName() {
+        Item firstItem = new Item(1, "first");
+        Item secondItem = new Item(2, "second");
+        Item thirdItem = new Item(3, "third");
+        Item fourthItem = new Item(4, "fourth");
+
+        List<Item> items = new ArrayList<>();
+        items.add(firstItem);
+        items.add(secondItem);
+        items.add(thirdItem);
+        items.add(fourthItem);
+        Collections.sort(items, new ItemDescByName());
+
+        List<Item> expected = new ArrayList<>();
+        expected.add(thirdItem);
+        expected.add(secondItem);
+        expected.add(fourthItem);
+        expected.add(firstItem);
+
+        assertThat(expected).isEqualTo(items);
     }
 }

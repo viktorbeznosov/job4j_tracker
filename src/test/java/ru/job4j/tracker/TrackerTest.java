@@ -137,5 +137,6 @@ public class TrackerTest {
         Collections.sort(items, new ItemDescByName());
         List<Item> expected = Arrays.asList(thirdItem, secondItem, fourthItem, firstItem);
         assertThat(expected).isEqualTo(items);
+
     }
 }

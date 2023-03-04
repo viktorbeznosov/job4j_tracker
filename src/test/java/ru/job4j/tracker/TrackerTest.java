@@ -4,6 +4,7 @@ import org.junit.Test;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -119,19 +120,9 @@ public class TrackerTest {
         Item thirdItem = new Item(3, "third");
         Item fourthItem = new Item(4, "fourth");
 
-        List<Item> items = new ArrayList<>();
-        items.add(firstItem);
-        items.add(secondItem);
-        items.add(thirdItem);
-        items.add(fourthItem);
+        List<Item> items = Arrays.asList(firstItem, secondItem, thirdItem, fourthItem);
         Collections.sort(items, new ItemAscByName());
-
-        List<Item> expected = new ArrayList<>();
-        expected.add(firstItem);
-        expected.add(fourthItem);
-        expected.add(secondItem);
-        expected.add(thirdItem);
-
+        List<Item> expected = Arrays.asList(firstItem, fourthItem, secondItem, thirdItem);
         assertThat(expected).isEqualTo(items);
     }
 
@@ -142,19 +133,9 @@ public class TrackerTest {
         Item thirdItem = new Item(3, "third");
         Item fourthItem = new Item(4, "fourth");
 
-        List<Item> items = new ArrayList<>();
-        items.add(firstItem);
-        items.add(secondItem);
-        items.add(thirdItem);
-        items.add(fourthItem);
+        List<Item> items = Arrays.asList(firstItem, secondItem, thirdItem, fourthItem);
         Collections.sort(items, new ItemDescByName());
-
-        List<Item> expected = new ArrayList<>();
-        expected.add(thirdItem);
-        expected.add(secondItem);
-        expected.add(fourthItem);
-        expected.add(firstItem);
-
+        List<Item> expected = Arrays.asList(thirdItem, secondItem, fourthItem, firstItem);
         assertThat(expected).isEqualTo(items);
     }
 }

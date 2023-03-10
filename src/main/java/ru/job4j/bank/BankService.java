@@ -22,7 +22,7 @@ public class BankService {
 
     /**
      * Метод добавляет пользователя в репозиторий
-     * @param user
+     * @param user пользователь
      */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
@@ -30,7 +30,7 @@ public class BankService {
 
     /**
      * Метод удалчет пользователя из репозитория
-     * @param passport
+     * @param passport номер паспорта
      * @return
      */
     public boolean deleteUser(String passport) {
@@ -40,8 +40,8 @@ public class BankService {
     /**
      * Метод принимает на вход номер паспорта и новый счет полльзователя и если находит пользователя, добавляет
      * ему еще один счет
-     * @param passport
-     * @param account
+     * @param passport номер паспорта
+     * @param account нрмер счета
      */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
@@ -57,7 +57,7 @@ public class BankService {
      * Метод принимает на вход номер паспорта и позвращает пользоваетля, найденного в репозитории
      * по заданному номеру паспорта.
      * В противном случае возвращает null
-     * @param passport
+     * @param passport номер паспорта
      * @return
      */
     public User findByPassport(String passport) {
@@ -73,8 +73,8 @@ public class BankService {
     /**
      * Метод принимает на вход номер паспорта пользователя и номер счета
      * и возвращает найденный счет пользователя с заданными паспортными данными
-     * @param passport
-     * @param requisite
+     * @param passport номер паспорта
+     * @param requisite номер счета
      * @return
      */
     public Account findByRequisite(String passport, String requisite) {
@@ -91,14 +91,14 @@ public class BankService {
     }
 
     /**
-     * Метод принимает на вход паспортные данные и номер счета пользователя отправителя и принимателя,
-     * и размер перефодимых средств и совершает транзакцию средств от отправителя к принимателю
+     * Метод принимает на вход паспортные данные и номер счета пользователя отправителя и получателя,
+     * и размер перефодимых средств и совершает транзакцию средств от отправителя к получателя
      * Возвращает true в случае успешной транзакции и false в противном случае
-     * @param srcPassport
-     * @param srcRequisite
-     * @param destPassport
-     * @param destRequisite
-     * @param amount
+     * @param srcPassport номер паспорта отправителя
+     * @param srcRequisite номер счета отправителя
+     * @param destPassport номер паспорта получателя
+     * @param destRequisite номер счета получателя
+     * @param amount сумма переводимых средств
      * @return
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
@@ -116,7 +116,7 @@ public class BankService {
 
     /**
      * Метод принимает на вход пользователя и возвращает все его счета
-     * @param user
+     * @param user пользователь
      * @return
      */
     public List<Account> getAccounts(User user) {

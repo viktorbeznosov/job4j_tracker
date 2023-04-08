@@ -12,5 +12,6 @@ public class StudentLevel {
                 .sorted(Comparator.comparing(Student::getScore).reversed())
                 .takeWhile(st -> st.getScore() > bound)
                 .collect(Collectors.toList());
+        
     }
 }

@@ -13,25 +13,26 @@ public class College {
     }
 
     public Optional<Student> findByAccount(String account) {
-        Optional<Student> rsl = Optional.empty();
-        Optional<Student> student = students.keySet()
+        return Optional.ofNullable(
+                students.keySet()
                 .stream()
                 .filter(s -> s.account().equals(account))
-                .findFirst();
-        return student.isEmpty() ? rsl : student;
+                .findFirst()
+                .orElse(null)
+        );
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {
         Optional<Student> a = findByAccount(account);
         Optional rsl = Optional.empty();
         if (a.isPresent()) {
-            Optional<Subject> subject = students.get(a.get())
+            rsl = Optional.ofNullable(
+                    students.get(a.get())
                     .stream()
                     .filter(s -> s.name().equals(name))
-                    .findFirst();
-            if (subject.isPresent()) {
-                rsl = subject;
-            }
+                    .findFirst()
+                    .orElse(null)
+            );
         }
         return rsl;
     }

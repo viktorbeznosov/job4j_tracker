@@ -13,13 +13,10 @@ public class College {
     }
 
     public Optional<Student> findByAccount(String account) {
-        Optional<Student> rsl = Optional.empty();
-        Optional<Student> student = students.keySet()
+        return students.keySet()
                 .stream()
                 .filter(s -> s.account().equals(account))
                 .findFirst();
-
-        return student.isEmpty() ? rsl : student;
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {

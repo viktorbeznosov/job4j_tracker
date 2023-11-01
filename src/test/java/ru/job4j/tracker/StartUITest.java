@@ -10,7 +10,7 @@ class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         UserAction[] actions = {
                 new ExitProgram(out)
         };
@@ -25,7 +25,7 @@ class StartUITest {
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
@@ -53,7 +53,7 @@ class StartUITest {
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test"));
         UserAction[] actions = new UserAction[]{
                 new ShowAllItems(out),
@@ -80,7 +80,7 @@ class StartUITest {
     @Test
     public void whenFindByNameAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test"));
         UserAction[] actions = new UserAction[]{
                 new ShowItemsByName(out),
@@ -107,7 +107,7 @@ class StartUITest {
     @Test
     public void whenFindByIdAction() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test"));
         UserAction[] actions = new UserAction[]{
                 new ShowById(out),
@@ -137,7 +137,7 @@ class StartUITest {
         Input in = new StubInput(
                 new String[] {"999", "0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         UserAction[] actions = new UserAction[]{
                 new ExitProgram(out)
         };

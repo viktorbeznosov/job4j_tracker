@@ -89,9 +89,14 @@ public class SqlTrackerTest {
     public void whenDeleteItemAndFindByDeletedNameIsEmpty() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item(1, "item");
+        Item item2 = new Item(2, "item2");
+        Item item3 = new Item(3, "item3");
         tracker.add(item);
+        tracker.add(item2);
+        tracker.add(item3);
         tracker.delete(1);
-        assertThat(tracker.findByName("item")).isEmpty();
+        assertThat(tracker.findById(1)).isNull();
+        assertThat(tracker.findAll()).isNotEmpty();
     }
 
     @Test

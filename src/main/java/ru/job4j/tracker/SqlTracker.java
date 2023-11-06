@@ -54,7 +54,7 @@ public class SqlTracker implements Store {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-        return null;
+        return item;
     }
 
     @Override

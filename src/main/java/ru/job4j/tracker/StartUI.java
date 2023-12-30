@@ -35,12 +35,14 @@ public class StartUI {
 
         Output out = new ConsoleOutput();
         Input input = new ValidateInput(out, new ConsoleInput());
-        Store tracker = new SqlTracker();
+        Store tracker = new MemTracker();
         UserAction[] actions = {
                 new CreateAction(out),
+                new CreateManyItems(out),
                 new ShowAllItems(out),
                 new EditItem(out),
                 new DeleteItem(out),
+                new DeleteAllItems(out),
                 new ShowById(out),
                 new ShowItemsByName(out),
                 new ExitProgram(out),

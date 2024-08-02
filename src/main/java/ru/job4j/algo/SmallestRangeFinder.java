@@ -20,6 +20,7 @@ public class SmallestRangeFinder {
     }
 
     public static void main(String[] args) {
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         int[] nums = {1, 3, 5, 7, 9};
         int k = 3;
         int[] result = findSmallestRange(nums, k);
@@ -28,5 +29,8 @@ public class SmallestRangeFinder {
         } else {
             System.out.println("Такой диапазон не существует.");
         }
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long actualMemUsed = afterUsedMem - beforeUsedMem;
+        System.out.println(actualMemUsed);
     }
 }

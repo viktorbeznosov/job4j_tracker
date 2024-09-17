@@ -30,4 +30,12 @@ public class Node<E> {
     public List<Node<E>> getChildren() {
         return children;
     }
+
+    public void addChild(Node<E> child) {
+        this.children.add(child);
+    }
+
+    public void removeChild(Node<E> child) {
+        this.children.remove(child);
+    }
 }

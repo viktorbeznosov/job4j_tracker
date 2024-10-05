@@ -2,6 +2,8 @@ package ru.job4j.algo.tree;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+
 import static org.assertj.core.api.Assertions.*;
 
 class BinarySearchTreeTest {
@@ -96,5 +98,30 @@ class BinarySearchTreeTest {
         }
         assertThat(tree.inPostOrder()).hasSize(7)
                 .containsExactly(1, 3, 2, 5, 7, 6, 4);
+    }
+
+    @Test
+    void testRemoveRightOfRoot() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{5, 3, 10, 2, 4, 9, 12}) {
+            tree.put(element);
+        }
+        tree.remove(10);
+        assertThat(tree.inSymmetricalOrder())
+                .hasSize(6)
+                .containsExactly(2, 3, 4, 5, 9, 12);
+        assertThat(tree.contains(10)).isFalse();
+    }
+
+    @Test
+    void testRemoveLeftOfRoot() throws NoSuchFieldException {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{5, 3, 10, 2, 4, 9, 12}) {
+            tree.put(element);
+        }
+        tree.remove(3);
+        assertThat(tree.inSymmetricalOrder())
+                .hasSize(6)
+                .containsExactly(2, 4, 5, 9, 10, 12);
     }
 }

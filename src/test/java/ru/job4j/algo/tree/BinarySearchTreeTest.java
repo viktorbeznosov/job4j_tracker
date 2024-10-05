@@ -124,4 +124,17 @@ class BinarySearchTreeTest {
                 .hasSize(6)
                 .containsExactly(2, 4, 5, 9, 10, 12);
     }
+
+    @Test
+    void testClearTree() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{5, 3, 10, 2, 4, 9, 12}) {
+            tree.put(element);
+        }
+        tree.clear();
+        assertThat(tree.contains(5)).isTrue();
+        assertThat(tree.inSymmetricalOrder())
+                .hasSize(1)
+                .containsExactly(5);
+    }
 }
